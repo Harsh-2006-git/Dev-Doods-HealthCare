@@ -1,0 +1,21 @@
+<script>start("c:\\Users\\harsh\\Downloads\\codes\\Dev-Doods\\image\\");</script>
+<script>onHasParentDirectory();</script>
+<script>addRow("advice.png","advice.png",0,50096,"48.9 kB",1738441222,"2/2/25, 1:50:22 AM");</script>
+<script>addRow("ai.png","ai.png",0,164224,"160 kB",1738140416,"1/29/25, 2:16:56 PM");</script>
+<script>addRow("anuj.png","anuj.png",0,927268,"906 kB",1738429960,"2/1/25, 10:42:40 PM");</script>
+<script>addRow("arun.jpg","arun.jpg",0,235436,"230 kB",1738429568,"2/1/25, 10:36:08 PM");</script>
+<script>addRow("bot.png","bot.png",0,31829,"31.1 kB",1738170986,"1/29/25, 10:46:26 PM");</script>
+<script>addRow("brochure.pdf","brochure.pdf",0,353324,"345 kB",1738246856,"1/30/25, 7:50:56 PM");</script>
+<script>addRow("doctor.png","doctor.png",0,35568,"34.7 kB",1738441124,"2/2/25, 1:48:44 AM");</script>
+<script>addRow("footer.png","footer.png",0,171956,"168 kB",1738231820,"1/30/25, 3:40:20 PM");</script>
+<script>addRow("harsh.jpg","harsh.jpg",0,304933,"298 kB",1738518452,"2/2/25, 11:17:32 PM");</script>
+<script>addRow("harsh.png","harsh.png",0,631882,"617 kB",1738517986,"2/2/25, 11:09:46 PM");</script>
+<script>addRow("images.jpg","images.jpg",0,15543,"15.2 kB",1738140296,"1/29/25, 2:14:56 PM");</script>
+<script>addRow("loading.gif","loading.gif",0,50980,"49.8 kB",1738140856,"1/29/25, 2:24:16 PM");</script>
+<script>addRow("location.png","location.png",0,58565,"57.2 kB",1738441320,"2/2/25, 1:52:00 AM");</script>
+<script>addRow("location1.png","location1.png",0,14187,"13.9 kB",1738441578,"2/2/25, 1:56:18 AM");</script>
+<script>addRow("logo.png","logo.png",0,8918,"8.7 kB",1738247890,"1/30/25, 8:08:10 PM");</script>
+<script>addRow("medicine.pdf","medicine.pdf",0,3189278,"3.0 MB",1738330954,"1/31/25, 7:12:34 PM");</script>
+<script>addRow("send.svg","send.svg",0,552,"552 B",1738140856,"1/29/25, 2:24:16 PM");</script>
+<script>addRow("user.png","user.png",0,98879,"96.6 kB",1738140288,"1/29/25, 2:14:48 PM");</script>
+<script>addRow("vivek.png","vivek.png",0,275494,"269 kB",1738430088,"2/1/25, 10:44:48 PM");</script>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="front-page.css" />
+    <link rel="icon" href="logo.png" />
+    <title>Health Advice</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        margin: 0;
+      }
+      .container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        width: 400px;
+        padding-right: 3rem;
+      }
+      select,
+      button {
+        margin: 10px;
+        padding: 10px;
+        font-size: 16px;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        background: #667eea;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #555eea;
+      }
+      #advice {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Health Advice Selector</h1>
+      <label for="disease">Choose a disease:</label>
+      <select id="disease">
+        <option value="">-- Select --</option>
+        <option value="Diabetes">Diabetes</option>
+        <option value="Hypertension">Hypertension</option>
+        <option value="Asthma">Asthma</option>
+        <option value="Arthritis">Arthritis</option>
+        <option value="Migraine">Migraine</option>
+        <option value="Heart Disease">Heart Disease</option>
+        <option value="Obesity">Obesity</option>
+        <option value="Depression">Depression</option>
+        <option value="Anxiety">Anxiety</option>
+        <option value="Cold and Flu">Cold and Flu</option>
+        <option value="COVID-19">COVID-19</option>
+        <option value="Allergies">Allergies</option>
+        <option value="Osteoporosis">Osteoporosis</option>
+        <option value="Liver Disease">Liver Disease</option>
+        <option value="Kidney Disease">Kidney Disease</option>
+        <option value="Thyroid Disorder">Thyroid Disorder</option>
+        <option value="Acne">Acne</option>
+        <option value="Eczema">Eczema</option>
+        <option value="Psoriasis">Psoriasis</option>
+        <option value="Gastritis">Gastritis</option>
+        <option value="Ulcers">Ulcers</option>
+        <option value="Anemia">Anemia</option>
+        <option value="Stroke">Stroke</option>
+        <option value="Parkinson’s Disease">Parkinson’s Disease</option>
+        <option value="Alzheimer’s Disease">Alzheimer’s Disease</option>
+        <option value="Epilepsy">Epilepsy</option>
+        <option value="Hepatitis">Hepatitis</option>
+        <option value="Tuberculosis">Tuberculosis</option>
+        <option value="Dengue">Dengue</option>
+        <option value="Malaria">Malaria</option>
+        <option value="Pneumonia">Pneumonia</option>
+        <option value="Bronchitis">Bronchitis</option>
+        <option value="Sinusitis">Sinusitis</option>
+        <option value="Chronic Fatigue Syndrome">
+          Chronic Fatigue Syndrome
+        </option>
+        <option value="Irritable Bowel Syndrome">
+          Irritable Bowel Syndrome
+        </option>
+        <option value="Celiac Disease">Celiac Disease</option>
+        <option value="Lupus">Lupus</option>
+        <option value="Gout">Gout</option>
+        <option value="Multiple Sclerosis">Multiple Sclerosis</option>
+        <option value="Polycystic Ovary Syndrome">
+          Polycystic Ovary Syndrome
+        </option>
+        <option value="Menopause Symptoms">Menopause Symptoms</option>
+      </select>
+      <button onclick="showAdvice()">Get Advice</button>
+      <p id="advice"></p>
+    </div>
+    <script>
+      function showAdvice() {
+        const adviceList = {
+          Diabetes:
+            "Maintain a balanced diet and monitor blood sugar levels regularly.",
+          Hypertension:
+            "Reduce salt intake and engage in regular physical activity.",
+          Asthma: "Avoid allergens and keep a rescue inhaler handy.",
+          Arthritis: "Stay active and use joint-friendly exercises.",
+          Migraine:
+            "Identify triggers and practice stress management techniques.",
+          "Heart Disease":
+            "Adopt a heart-healthy diet and stay physically active.",
+          Obesity:
+            "Exercise regularly and follow a nutritious, portion-controlled diet.",
+          Depression:
+            "Seek professional support and engage in positive social interactions.",
+          Anxiety: "Practice mindfulness and deep breathing exercises.",
+          "Cold and Flu": "Stay hydrated and get plenty of rest.",
+          "COVID-19":
+            "Follow hygiene protocols and stay updated on vaccinations.",
+          Allergies: "Identify allergens and take prescribed antihistamines.",
+          Osteoporosis: "Ensure sufficient calcium and vitamin D intake.",
+          "Liver Disease":
+            "Avoid excessive alcohol consumption and eat a healthy diet.",
+          "Kidney Disease": "Stay hydrated and monitor protein intake.",
+          "Thyroid Disorder":
+            "Follow your doctor’s medication guidelines and get regular check-ups.",
+        };
+        let disease = document.getElementById("disease").value;
+        let advice =
+          adviceList[disease] || "Please select a disease to get advice.";
+        document.getElementById("advice").innerText = advice;
+      }
+    </script>
+  </body>
+</html>

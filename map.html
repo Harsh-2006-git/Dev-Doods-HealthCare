@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hospital Finder</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f0f0f0;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+      }
+      #container {
+        width: 90%;
+        max-width: 1200px;
+        padding: 20px;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      #map {
+        height: 500px;
+        width: 100%;
+        border-radius: 8px;
+      }
+      .controls {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      input {
+        padding: 10px;
+        font-size: 14px;
+        width: 60%;
+        margin: 5px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+      button {
+        padding: 10px 15px;
+        font-size: 14px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div class="controls">
+        <input
+          type="text"
+          id="locationInput"
+          placeholder="Enter location name (e.g., Bhopal)"
+        />
+        <button onclick="findLocation()">Find Location</button>
+        <button onclick="getCurrentLocation()">Get Current Location</button>
+      </div>
+      <div id="map"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      var map = L.map("map").setView([51.505, -0.09], 13); // Default map center
+
+      // Add the tile layer
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map);
+
+      var markers = []; // To store markers for adjusting map bounds later
+
+      // Function to find the location by name and place a bigger red marker
+      function findLocation() {
+        var locationName = document.getElementById("locationInput").value;
+
+        // Call the Nominatim API to get the latitude and longitude
+        fetch(
+          `https://nominatim.openstreetmap.org/search?format=json&q=${locationName}`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            if (data && data.length > 0) {
+              var lat = parseFloat(data[0].lat);
+              var lon = parseFloat(data[0].lon);
+
+              // Clear any existing markers
+              markers.forEach((marker) => map.removeLayer(marker));
+              markers = []; // Reset the markers array
+
+              // Create a larger icon for the hospital marker
+              var hospitalIcon = L.icon({
+                iconUrl:
+                  "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-red.png",
+                iconSize: [80, 80], // Increase the size of the marker
+                iconAnchor: [40, 40], // Anchor the icon to the bottom center
+                popupAnchor: [0, -40], // Popup appears above the marker
+              });
+
+              // Add the red marker at the location's coordinates
+              var marker = L.marker([lat, lon], { icon: hospitalIcon })
+                .addTo(map)
+                .bindPopup("Location: " + locationName)
+                .openPopup();
+
+              markers.push(marker); // Store the marker in the array
+
+              // Adjust the map to show all markers
+              var bounds = markers.map((marker) => marker.getLatLng());
+              map.fitBounds(bounds);
+            } else {
+              alert("Location not found!");
+            }
+          })
+          .catch((error) => {
+            alert("Error fetching data: " + error);
+          });
+      }
+
+      // Function to get the user's current location
+      function getCurrentLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            function (position) {
+              var lat = position.coords.latitude;
+              var lon = position.coords.longitude;
+
+              // Clear any existing markers
+              markers.forEach((marker) => map.removeLayer(marker));
+              markers = []; // Reset the markers array
+
+              // Create a larger icon for the user's current location
+              var userIcon = L.icon({
+                iconUrl:
+                  "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
+                iconSize: [40, 40], // Adjust the size of the user marker
+                iconAnchor: [20, 40], // Anchor the icon to the bottom center
+                popupAnchor: [0, -40], // Popup appears above the marker
+              });
+
+              // Add a marker for the user's current location
+              var userMarker = L.marker([lat, lon], { icon: userIcon })
+                .addTo(map)
+                .bindPopup("Your Current Location")
+                .openPopup();
+
+              markers.push(userMarker); // Store the marker in the array
+
+              // Adjust the map to show the user's location
+              map.setView([lat, lon], 13);
+            },
+            function (error) {
+              alert("Unable to retrieve your location.");
+            }
+          );
+        } else {
+          alert("Geolocation is not supported by this browser.");
+        }
+      }
+    </script>
+  </body>
+</html>

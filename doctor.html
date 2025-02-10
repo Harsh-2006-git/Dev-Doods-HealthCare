@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consult a Specialist</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f7fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+      }
+
+      header {
+        background-color: #2a3d66;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        border-radius: 5px 5px 0 0;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        margin: 0;
+      }
+
+      .form-group {
+        margin: 15px 0;
+      }
+
+      label {
+        font-weight: bold;
+        margin-right: 10px;
+      }
+
+      select,
+      button {
+        padding: 10px;
+        font-size: 16px;
+        width: 100%;
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      button {
+        background-color: #2a3d66;
+        color: white;
+        cursor: pointer;
+        border: none;
+      }
+
+      button:hover {
+        background-color: #1a2d44;
+      }
+
+      h2 {
+        color: #333;
+      }
+
+      #doctorList {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      #doctorList li {
+        background-color: #f9f9f9;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-btn {
+        background-color: #2a3d66;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+
+      .form-btn:hover {
+        background-color: #1a2d44;
+      }
+
+      .noDoctors {
+        color: #ff5722;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .form-container {
+        display: none;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .form-container a {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Consult a Specialist</h1>
+      </header>
+
+      <div class="form-group">
+        <label for="disease">Select Disease:</label>
+        <select id="disease">
+          <option value="Diabetes">Diabetes</option>
+          <option value="Hypertension">Hypertension</option>
+          <option value="Asthma">Asthma</option>
+          <option value="Arthritis">Arthritis</option>
+          <option value="Migraine">Migraine</option>
+          <option value="Heart Disease">Heart Disease</option>
+          <option value="Obesity">Obesity</option>
+          <option value="Depression">Depression</option>
+          <option value="Anxiety">Anxiety</option>
+          <option value="Cold and Flu">Cold and Flu</option>
+          <option value="COVID-19">COVID-19</option>
+          <option value="Allergies">Allergies</option>
+          <option value="Osteoporosis">Osteoporosis</option>
+          <option value="Liver Disease">Liver Disease</option>
+          <option value="Kidney Disease">Kidney Disease</option>
+          <option value="Thyroid Disorder">Thyroid Disorder</option>
+        </select>
+      </div>
+
+      <button onclick="findDoctors()">Find Specialists</button>
+
+      <h2>Prevention Tips:</h2>
+      <p id="preventionTips"></p>
+
+      <h2>Top Specialists:</h2>
+      <ul id="doctorList"></ul>
+
+      <p id="noDoctors" class="noDoctors" style="display: none">
+        No doctors found for the selected disease.
+      </p>
+
+      <div class="form-container" id="formContainer">
+        <h3>Unable to find a doctor? Fill the form below for consultation:</h3>
+        <a href="https://forms.gle/your-google-form-link" target="_blank">
+          <button class="form-btn">Fill Google Form</button>
+        </a>
+      </div>
+    </div>
+
+    <script>
+      const diseaseTips = {
+        Diabetes:
+          "Maintain a balanced diet and monitor blood sugar levels regularly.",
+        Hypertension:
+          "Reduce salt intake and engage in regular physical activity.",
+        Asthma: "Avoid allergens and keep a rescue inhaler handy.",
+        Arthritis: "Stay active and use joint-friendly exercises.",
+        Migraine:
+          "Identify triggers and practice stress management techniques.",
+        "Heart Disease":
+          "Adopt a heart-healthy diet and stay physically active.",
+        Obesity:
+          "Exercise regularly and follow a nutritious, portion-controlled diet.",
+        Depression:
+          "Seek professional support and engage in positive social interactions.",
+        Anxiety: "Practice mindfulness and deep breathing exercises.",
+        "Cold and Flu": "Stay hydrated and get plenty of rest.",
+        "COVID-19":
+          "Follow hygiene protocols and stay updated on vaccinations.",
+        Allergies: "Identify allergens and take prescribed antihistamines.",
+        Osteoporosis: "Ensure sufficient calcium and vitamin D intake.",
+        "Liver Disease":
+          "Avoid excessive alcohol consumption and eat a healthy diet.",
+        "Kidney Disease": "Stay hydrated and monitor protein intake.",
+        "Thyroid Disorder":
+          "Follow your doctor’s medication guidelines and get regular check-ups.",
+      };
+
+      const doctors = [
+        { name: "Dr kinesh pandey", specialty: "diabetes", location: "indore" },
+        {
+          name: "Dr. Abdesh Tomar",
+          specialty: "Hypertension",
+          location: "Gwalior",
+        },
+        { name: "Dr. Rao", specialty: "Pulmonologist", location: "Bangalore" },
+        { name: "Dr. Mehta", specialty: "Rheumatologist", location: "Chennai" },
+        { name: "Dr. Verma", specialty: "Psychiatrist", location: "Hyderabad" },
+        { name: "Dr. Patel", specialty: "Nephrologist", location: "Ahmedabad" },
+        { name: "Dr. Gupta", specialty: "Endocrinologist", location: "Delhi" },
+        { name: "Dr. Gupta", specialty: "Endocrinologist", location: "Delhi" },
+        { name: "Dr. Gupta", specialty: "Endocrinologist", location: "Delhi" },
+        { name: "Dr. Gupta", specialty: "Endocrinologist", location: "Delhi" },
+        { name: "Dr. Gupta", specialty: "Endocrinologist", location: "Delhi" },
+      ];
+
+      function findDoctors() {
+        const disease = document.getElementById("disease").value;
+        const preventionTips = document.getElementById("preventionTips");
+        const doctorList = document.getElementById("doctorList");
+        const noDoctors = document.getElementById("noDoctors");
+        const formContainer = document.getElementById("formContainer");
+
+        doctorList.innerHTML = ""; // Clear the list
+        noDoctors.style.display = "none"; // Hide "no doctors found" message
+        formContainer.style.display = "none"; // Hide Google Form button
+
+        // Display prevention tips
+        preventionTips.textContent =
+          diseaseTips[disease] || "No tips available.";
+
+        // Filter doctors based on the disease (specialty includes disease)
+        const filteredDoctors = doctors.filter((doc) =>
+          doc.specialty.toLowerCase().includes(disease.toLowerCase())
+        );
+
+        if (filteredDoctors.length > 0) {
+          filteredDoctors.forEach((doctor) => {
+            const li = document.createElement("li");
+            li.textContent = `${doctor.name} - ${doctor.specialty} (Location: ${doctor.location})`;
+            doctorList.appendChild(li);
+          });
+        } else {
+          noDoctors.style.display = "block"; // Show "no doctors found" message
+          formContainer.style.display = "block"; // Show Google Form button
+        }
+      }
+    </script>
+  </body>
+</html>
