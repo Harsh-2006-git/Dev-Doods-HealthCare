@@ -32,11 +32,11 @@ async function getApiResponse(aiChatBox) {
 }
 function showLoading() {
   let html = ` <div id="img">
-        <img src="image/ai.png" >
+        <img src="https://img.freepik.com/premium-vector/chatbot-icon-concept-chat-bot-chatterbot-robot-virtual-assistance-website_123447-1615.jpg?w=1380" >
     </div>
     <div class="text">
     </div>
-     <img class="loading" src="image/loading.gif"  alt="loading" height="50px">`;
+     <img class="loading" src="https://www.wpfaster.org/wp-content/uploads/2013/06/loading-gif.gif"  alt="loading" height="50px">`;
   let aiChatBox = createChatBox(html, "ai-chat-box");
   chatContainer.appendChild(aiChatBox);
   getApiResponse(aiChatBox);
@@ -54,7 +54,7 @@ btn.addEventListener("click", function () {
   if (!userMessage) return;
   // create the chat box
   let html = ` <div id="img">
-        <img src="image/user.png" >
+        <img src="https://cdnl.iconscout.com/lottie/premium/thumb/young-user-profile-5273095-4424672.gif" >
     </div>
     <div class="text">
     </div>`;
