@@ -1,9 +1,6 @@
 # Dev-Doods-HealthCare
 The Healthcare Management System is a web-based platform that simplifies healthcare management for both patients and healthcare providers. The system allows users to efficiently manage appointments, medical records, and communication between patients and healthcare professionals, improving healthcare delivery.
 
-Healthcare Management System
-A web-based Healthcare Management System to help healthcare professionals and patients manage appointments, patient records, and treatment plans. This system aims to streamline healthcare processes, improve efficiency, and ensure quality care.
-
 Features
 For Admin:
 Patient Management: Add, update, delete patient details.
