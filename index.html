@@ -18,7 +18,7 @@
     />
 
     <link rel="stylesheet" href="front-page.css" />
-    <link rel="icon" href="image/logo.png" />
+    <link rel="icon" href="https://cdn4.vectorstock.com/i/1000x1000/41/58/dev-letter-logo-design-on-white-background-vector-41764158.jpg" />
     <title>DevDoods: Login/Signup</title>
     <style>
       * {
@@ -32,7 +32,7 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        background: linear-gradient(135deg, #667eea, #764ba2);
       }
       .container {
         width: 350px;
@@ -135,7 +135,7 @@
         background: #555eea;
       }
       .toggle {
-        margin: 10px;
+        margin-top: 10px;
         color: #667eea;
         cursor: pointer;
       }
@@ -167,7 +167,7 @@
           </div>
           <button onclick="signUp()">Sign Up</button>
           <p class="toggle" onclick="flipCard()">
-            Already have an account ? Sign In
+            Already have an account? Sign In
           </p>
         </div>
 
@@ -222,7 +222,7 @@
         let storedPassword = localStorage.getItem("userPassword");
 
         if (email === storedEmail && password === storedPassword) {
-          window.location.href = "body1.html";
+          window.location.href = "body.html";
         } else {
           alert("Invalid credentials!");
         }
